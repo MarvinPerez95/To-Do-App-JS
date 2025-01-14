@@ -5,7 +5,9 @@ class Tarea{
         this.completada = completada;
     }
 
-    CompletarTarea(){
+    completarTarea(){
         this.completada = true;
     }
 }
+
+export default Tarea;

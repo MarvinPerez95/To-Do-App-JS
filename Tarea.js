@@ -1,3 +1,4 @@
+import Tarea from "./App.js";
 class GestionTarea{
     constructor (){
         this.tareas = []
@@ -20,7 +21,7 @@ class GestionTarea{
 
     completarTarea(id){
         const tarea = this.tareas.find(tarea => tarea.id ===id);
-        if(tarea) tarea.marcarCompletada(); 
+        if(tarea) tarea.completarTarea(); 
     }
 }
 export default GestionTarea;
