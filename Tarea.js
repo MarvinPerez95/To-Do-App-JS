@@ -4,11 +4,9 @@ class GestionTarea{
         this.tareas = []
     }
 
-    agregarTarea(descripcion){
-        const id = this.tareas.length + 1;
-        const nuevaTarea = new Tarea(id, descripcion);
-        this.tareas.push(nuevaTarea);
-        return nuevaTarea;
+    agregarTarea(taskData){
+        //taskData.id +=1;
+        this.tareas.push(taskData);
     }
 
     listarTareas(){
@@ -16,12 +14,30 @@ class GestionTarea{
     }
 
     eliminarTarea(id){
-        this.tareas = this.tareas.filter(tarea=>tarea.id !==id);
+        this.tareas = this.tareas.filter(tarea=>tarea.id !==parseInt(id));
     }
 
     completarTarea(id){
-        const tarea = this.tareas.find(tarea => tarea.id ===id);
+        const tarea = this.tareas.find(tarea => tarea.id ===parseInt(id));
+        if(tarea) {
+            tarea.completed = !tarea.completed;
+        } 
+    }
+
+}
+export default GestionTarea;
+
+
+ /*    agregarTarea(descripcion){
+        const id = this.tareas.length + 1;
+        const nuevaTarea = new Tarea(id, descripcion);
+        this.tareas.push(nuevaTarea);
+        //return nuevaTarea;
+} 
+        completarTarea(id){
+        const tarea = this.tareas.find(tarea => tarea.id ===parseInt(id));
         if(tarea) tarea.completarTarea(); 
     }
 }
-export default GestionTarea;
+
+*/

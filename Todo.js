@@ -11,7 +11,7 @@ function addTask(){
     }
 
     const taskData = {
-        id: Date.now(),
+        id: Date.now(), //task.id,
         text: inputBox.value.trim(),
         completed: false,
     };
@@ -25,13 +25,13 @@ function addTask(){
 function renderTask(taskData){
     let li = document.createElement("li");
     li.setAttribute("id",taskData.id);
-    li.innerHTML = taskData.text;
+    li.textContent = taskData.text;
     if (taskData.completed){
         li.classList.add("checked");
     }
 
     let span = document.createElement("span");
-    span.innerHTML = "\u00d7";
+    span.textContent = "\u00d7";
     li.appendChild(span);
     
     listContainer.appendChild(li);
@@ -58,7 +58,7 @@ function saveData(){
 
 function showTask(){
     const data = JSON.parse(localStorage.getItem('data'));
-    listContainer.innerHTML = '';
+    listContainer.textContent = '';
     
     if (data) {
         data.forEach(taskData => {
