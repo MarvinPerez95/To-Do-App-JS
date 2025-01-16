@@ -1,7 +1,7 @@
 import Tarea from "./App.js";
 class GestionTarea{
     constructor (){
-        this.tareas = []
+        this.tareas = JSON.parse(localStorage.getItem('data'));
     }
 
     agregarTarea(taskData){

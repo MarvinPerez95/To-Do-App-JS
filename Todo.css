@@ -52,7 +52,7 @@ input{
     font-weight: 14px;
 }
 
-button{
+.todo-app button{
     border: none;
     outline: none;
     padding: 16px 50px;
@@ -93,6 +93,15 @@ ul li.checked{
 ul li.checked::before{
     background-image: url(IMG/check.jpg);
 }
+
+/*ul li button{
+    position: absolute;
+    text-align: center;
+    outline: auto;
+    right: 40px;
+    width: 5px;
+    height: 10px;
+}*/
 
 ul li span{
     position: absolute;

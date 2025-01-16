@@ -29,13 +29,38 @@ function renderTask(taskData){
     if (taskData.completed){
         li.classList.add("checked");
     }
-
+/*
+    let edit = document.createAttribute("button");
+    edit.textContent = "Editar";
+    li.appendChild(edit);
+*/
     let span = document.createElement("span");
     span.textContent = "\u00d7";
     li.appendChild(span);
     
     listContainer.appendChild(li);
 }   
+
+function saveData(){
+    const tasks = task.listarTareas();
+    localStorage.setItem("data", JSON.stringify(tasks));
+};
+
+function showTask(){
+    //task = JSON.parse(localStorage.getItem('data'));
+    listContainer.textContent = '';
+    try {
+        const data = JSON.parse(localStorage.getItem('data') || []);
+        if (data){
+            data.forEach(taskData => {
+                renderTask(taskData);
+            });
+        }
+    }
+    catch (error){
+        error("Error en obtener los datos!", error);
+    }
+}
 
 listContainer.addEventListener("click", function(e){
     if(e.target.tagName==="LI"){
@@ -50,22 +75,6 @@ listContainer.addEventListener("click", function(e){
         saveData();
     }
 }, false)
-
-function saveData(){
-    const tasks = task.listarTareas();
-    localStorage.setItem("data", JSON.stringify(tasks));
-};
-
-function showTask(){
-    const data = JSON.parse(localStorage.getItem('data'));
-    listContainer.textContent = '';
-    
-    if (data) {
-        data.forEach(taskData => {
-            renderTask(taskData);
-        });
-    }
-}
 
 document.addEventListener("DOMContentLoaded", function() {
     showTask();
