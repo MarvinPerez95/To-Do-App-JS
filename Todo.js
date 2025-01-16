@@ -47,11 +47,12 @@ function saveData(){
 };
 
 function showTask(){
-    //task = JSON.parse(localStorage.getItem('data'));
     listContainer.textContent = '';
     try {
         const data = JSON.parse(localStorage.getItem('data') || []);
         if (data){
+            task.RecargarTareas(data); 
+
             data.forEach(taskData => {
                 renderTask(taskData);
             });
